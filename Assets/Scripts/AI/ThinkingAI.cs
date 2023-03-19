@@ -41,7 +41,7 @@ public class ThinkingAI : MonoBehaviour
 
             if (fleetingTimer >= fleetingTimerMax)
             {
-                GetComponent<WonderAI>().enabled = true;
+                GetComponent<PatrolAI>().enabled = true;
                 thinkingTimer = 0f;
                 fleetingTimer = 0f;
                 enabled = false;

@@ -11,13 +11,13 @@ public class ChasingAI : MonoBehaviour
     public NavMeshAgent enemy;
     private Raycasting raycaster;
 
-    public float maxSightDistance;
-    public int sightIterations;
+    public float maxSightDistance = 60;
+    public int sightIterations = 100;
     public float fleetingTimerMax = 1f;
     private float fleetingTimer;
 
     public float killRange = 8;
-    public bool isDead;
+    public bool isDead = false;
 
     private void Start()
     {
@@ -60,5 +60,4 @@ public class ChasingAI : MonoBehaviour
         Vector3 pos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         return pos;
     }
-
 }

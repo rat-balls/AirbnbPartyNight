@@ -7,8 +7,8 @@ public class LookingAI : MonoBehaviour
     public GameObject player;
     private Raycasting raycaster;
 
-    public float maxSightDistance;
-    public int sightIterations;
+    public float maxSightDistance = 60;
+    public int sightIterations = 100;
 
     public float fleetingTimerMax = 1f;
     private float fleetingTimer;

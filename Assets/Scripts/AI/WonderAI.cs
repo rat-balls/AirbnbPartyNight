@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WonderAI : MonoBehaviour
 {
+
+    public GameObject player;
     public float Speed = 3f;
     public float SpeedRotation = 100f;
 
@@ -13,8 +15,8 @@ public class WonderAI : MonoBehaviour
     private bool isWalking = false;
     private Raycasting raycaster;
 
-    public float maxSightDistance;
-    public int sightIterations;
+    public float maxSightDistance = 60;
+    public int sightIterations = 100;
 
     private float timer = 0f;
 

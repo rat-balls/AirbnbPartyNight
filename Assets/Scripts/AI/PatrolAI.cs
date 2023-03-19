@@ -11,8 +11,8 @@ public class PatrolAI : MonoBehaviour
     public float speedWalk = 3f;
     private Raycasting raycaster;
 
-    public float maxSightDistance;
-    public int sightIterations;
+    public float maxSightDistance = 60;
+    public int sightIterations = 100;
 
     public Transform[] waypoints;
     public GameObject player;
@@ -88,8 +88,7 @@ public class PatrolAI : MonoBehaviour
         {
             Vector3 dir = (player.transform.position - transform.position).normalized;
             float direction = Vector3.Dot(dir, transform.forward);
-
-            if(direction >= -Mathf.PI/8 && direction <= Mathf.PI/8){
+            if(direction >= 0.3){
                 enabled = false;
                 GetComponent<LookingAI>().enabled = true;
             }
@@ -100,7 +99,5 @@ public class PatrolAI : MonoBehaviour
         }
         
     }
-    
-
 }
 

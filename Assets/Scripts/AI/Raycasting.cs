@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Raycasting : MonoBehaviour
 {
-    public float apertureAngle;
+    public float apertureAngle = 300;
 
     public bool CanSeePlayer(float distance, int iterations)
     {
         float angleStep = apertureAngle / (float)iterations;
         Vector3 startingPoint = transform.position;
+        startingPoint.y = transform.position.y + GetComponent<NavMeshAgent>().height/2;
 
         RaycastHit hit;
 
