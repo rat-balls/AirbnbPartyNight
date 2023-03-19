@@ -6,11 +6,6 @@ public class Raycasting : MonoBehaviour
 {
     public float apertureAngle;
 
-    void Update()
-    {
-
-    }
-
     public bool CanSeePlayer(float distance, int iterations)
     {
         float angleStep = apertureAngle / (float)iterations;
@@ -27,9 +22,7 @@ public class Raycasting : MonoBehaviour
 
             if (Physics.Raycast(startingPoint, sightVector, out hit, distance))
             {
-
-                Debug.Log(hit.transform.tag);
-                if (hit.transform.tag == "Player")
+                if (hit.transform.tag == "Player" && !GetComponent<ChasingAI>().isDead)
                 {
                     return true;
                  }
@@ -37,8 +30,7 @@ public class Raycasting : MonoBehaviour
         }
 
         if (Physics.Raycast(startingPoint, transform.forward, out hit, distance)){
-            Debug.Log(hit.transform.tag);
-            if (hit.transform.tag == "Player")
+            if (hit.transform.tag == "Player" && !GetComponent<ChasingAI>().isDead)
             {
                 return true;
             }

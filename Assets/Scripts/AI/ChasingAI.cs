@@ -13,7 +13,11 @@ public class ChasingAI : MonoBehaviour
 
     public float maxSightDistance;
     public int sightIterations;
-    private float fleetingTimer = 0;
+    public float fleetingTimerMax = 1f;
+    private float fleetingTimer;
+
+    public float killRange = 8;
+    public bool isDead;
 
     private void Start()
     {
@@ -23,24 +27,25 @@ public class ChasingAI : MonoBehaviour
 
     void Update()
     {
-
         enemy.SetDestination(player.position);
-        transform.LookAt(player.transform);
+        transform.LookAt(FocusTarget());
         enemy.speed = 23;
 
         float distance = Vector3.Distance(transform.position, player.position);
 
         if (raycaster.CanSeePlayer(maxSightDistance, sightIterations))
         {   
-            if (distance <= 5)
+            if (distance <= killRange)
             {
-                Destroy(playerObj);
+                GetComponent<PatrolAI>().enabled = true;
+                isDead = true;
+                enabled = false;
             }
         }
         else
         {
             fleetingTimer += Time.deltaTime;
-            if (fleetingTimer >= 3)
+            if (fleetingTimer >= fleetingTimerMax)
             {
                 enemy.speed = 2;
                 fleetingTimer = 0;
@@ -50,4 +55,10 @@ public class ChasingAI : MonoBehaviour
             }
         }
     }
+
+    private Vector3 FocusTarget(){
+        Vector3 pos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        return pos;
+    }
+
 }

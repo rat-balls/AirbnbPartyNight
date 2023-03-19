@@ -55,7 +55,6 @@ public class WonderAI : MonoBehaviour
             GetComponent<LookingAI>().enabled = true;
             timer = 0;
             StopAllCoroutines();
-
         }
         else
         {

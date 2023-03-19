@@ -15,6 +15,7 @@ public class PatrolAI : MonoBehaviour
     public int sightIterations;
 
     public Transform[] waypoints;
+    public GameObject player;
 
 
     float m_WaitTime;
@@ -61,7 +62,6 @@ public class PatrolAI : MonoBehaviour
         if (raycaster.CanSeePlayer(maxSightDistance, sightIterations))
         {
             navMeshAgent.SetDestination(transform.position);
-
         }
 
     }
@@ -86,9 +86,21 @@ public class PatrolAI : MonoBehaviour
         Patroling();
         if (raycaster.CanSeePlayer(maxSightDistance, sightIterations))
         {
-            enabled = false;
-            GetComponent<LookingAI>().enabled = true;
+            Vector3 dir = (player.transform.position - transform.position).normalized;
+            float direction = Vector3.Dot(dir, transform.forward);
+
+            if(direction >= -Mathf.PI/8 && direction <= Mathf.PI/8){
+                enabled = false;
+                GetComponent<LookingAI>().enabled = true;
+            }
+            else{
+                enabled = false;
+                GetComponent<ThinkingAI>().enabled = true;
+            }
         }
+        
     }
+    
+
 }
 

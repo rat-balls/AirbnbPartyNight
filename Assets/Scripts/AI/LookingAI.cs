@@ -5,12 +5,16 @@ using UnityEngine;
 public class LookingAI : MonoBehaviour
 {
     public GameObject player;
-    private float currentLookingTime = 0f;
     private Raycasting raycaster;
 
     public float maxSightDistance;
     public int sightIterations;
-    private float Fleetingtimer = 0f;
+
+    public float fleetingTimerMax = 1f;
+    private float fleetingTimer;
+
+    public float lookingTimerMax = 1f;
+    private float  lookingTimer;
 
 
     void Start()
@@ -20,37 +24,36 @@ public class LookingAI : MonoBehaviour
 
     void Update()
     {
-        
-        transform.LookAt(player.transform);
+        transform.LookAt(FocusTarget());
 
         if (raycaster.CanSeePlayer(maxSightDistance, sightIterations))
         {
-            currentLookingTime += Time.deltaTime;
+            lookingTimer += Time.deltaTime;
 
-            if (currentLookingTime >= 3f)
+            if (lookingTimer >= lookingTimerMax)
             {
-                enabled = false;
                 GetComponent<ChasingAI>().enabled = true;
-                currentLookingTime = 0;
-                Fleetingtimer = 0;
-
-
+                lookingTimer = 0f;
+                fleetingTimer = 0f;
+                enabled = false;
             }
         }
         else
         {
-            Fleetingtimer += Time.deltaTime;
+            fleetingTimer += Time.deltaTime;
 
-            if (Fleetingtimer >= 1f)
+            if (fleetingTimer >= fleetingTimerMax)
             {
-                currentLookingTime = 0;
                 enabled = false;
                 GetComponent<WonderAI>().enabled = true;
-                Fleetingtimer = 0f;
+                fleetingTimer = 0f;
+                lookingTimer = 0f;
             }
         }
- 
     }
     
-
+    private Vector3 FocusTarget(){
+        Vector3 pos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        return pos;
+    }
 }
