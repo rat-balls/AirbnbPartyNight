@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Interact : MonoBehaviour
 {   
@@ -35,21 +36,11 @@ public class Interact : MonoBehaviour
                     AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
                     if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
                         Debug.Log("Open");
-                        animator.Play("DoorOpen");
                         // Source.PlayOneShot(doorOpenSound);
                     } else if(currentAnim.IsName("DoorOpen")){
                         Debug.Log("Close");
-                        animator.Play("DoorClose");
                         // Source.PlayOneShot(doorCloseSound);
-                    } else if(currentAnim.IsName("DoorClose2") || currentAnim.IsName("Idle2")){
-                        Debug.Log("Open");
-                        animator.Play("DoorOpen2");
-                        // Source.PlayOneShot(doorOpenSound);
-                    } else if(currentAnim.IsName("DoorOpen2")){
-                        Debug.Log("Close");
-                        animator.Play("DoorClose2");
-                        // Source.PlayOneShot(doorCloseSound);
-                    }
+                    } 
                     
                 }
             }
