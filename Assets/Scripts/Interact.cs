@@ -33,18 +33,22 @@ public class Interact : MonoBehaviour
                 if(Input.GetKeyDown(KeyCode.E))
                 {   
                     AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
-                    if(currentAnim.IsName("DoorClose")){
+                    if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
                         Debug.Log("Open");
                         animator.Play("DoorOpen");
-                        obj.transform.Rotate(0, 0, -90);
-                        Source.PlayOneShot(doorOpenSound);
+                        // Source.PlayOneShot(doorOpenSound);
                     } else if(currentAnim.IsName("DoorOpen")){
                         Debug.Log("Close");
                         animator.Play("DoorClose");
-                        obj.transform.Rotate(0, 0, 90);
-                        Source.volume = 0.1f;
-                        Source.PlayOneShot(doorCloseSound);
-                        Source.volume = 1f;
+                        // Source.PlayOneShot(doorCloseSound);
+                    } else if(currentAnim.IsName("DoorClose2") || currentAnim.IsName("Idle2")){
+                        Debug.Log("Open");
+                        animator.Play("DoorOpen2");
+                        // Source.PlayOneShot(doorOpenSound);
+                    } else if(currentAnim.IsName("DoorOpen2")){
+                        Debug.Log("Close");
+                        animator.Play("DoorClose2");
+                        // Source.PlayOneShot(doorCloseSound);
                     }
                     
                 }
