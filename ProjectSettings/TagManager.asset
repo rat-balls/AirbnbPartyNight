@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - door
+  - door -x facing
+  - door -z facing
+  - door x facing
+  - door z facing
   layers:
   - Default
   - TransparentFX
