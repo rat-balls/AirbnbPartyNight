@@ -35,88 +35,22 @@ public class Interact : MonoBehaviour
                 
                 if(Input.GetKeyDown(KeyCode.E))
                 {   
-                    Vector3 Openangle = new Vector3(-90f, 0, -90f);
-                    Vector3 Closeangle = new Vector3(-90f, 0, 0);
-                    AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
-                    if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
-                        obj.transform.DORotate(Openangle, 1f);
-                        animator.Play("DoorOpen");
-                        // Source.PlayOneShot(doorOpenSound);
-                    } else if(currentAnim.IsName("DoorOpen")){
-                        Debug.Log("Close");
-                        obj.transform.DORotate(Closeangle, 1f);
-                        animator.Play("DoorClose");
-                        // Source.PlayOneShot(doorCloseSound);
-                    } 
-                }
-            } else if(obj.tag == "door -x facing")
-            {   
-                
-                Animator animator = obj.GetComponent<Animator>();
-
-                
-                if(Input.GetKeyDown(KeyCode.E))
-                {   
                     
-                    Vector3 Openangle = new Vector3(-90f, 0, 0f);
-                    Vector3 Closeangle = new Vector3(-90f, 0, 90f);
+
                     AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
 
                     if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
-                        obj.transform.DORotate(Openangle, 1f);
+                        obj.transform.DORotate(new Vector3(0, 0, -90), 1f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorOpen");
                         // Source.PlayOneShot(doorOpenSound);
                     } else if(currentAnim.IsName("DoorOpen")){
                         Debug.Log("Close");
-                        obj.transform.DORotate(Closeangle, 1f);
-                        animator.Play("DoorClose");
-                        // Source.PlayOneShot(doorCloseSound);
-                    }
-                }
-            } else if(obj.tag == "door x facing")
-            {   
-                
-                Animator animator = obj.GetComponent<Animator>();
-                
-                if(Input.GetKeyDown(KeyCode.E))
-                {   
-                    Vector3 Openangle = new Vector3(-90f, 0, -270f);
-                    Vector3 Closeangle = new Vector3(-90f, 0, -180f);
-                    AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
-
-                    if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
-                        obj.transform.DORotate(Openangle, 1f);
-                        animator.Play("DoorOpen");
-                        // Source.PlayOneShot(doorOpenSound);
-                    } else if(currentAnim.IsName("DoorOpen")){
-                        Debug.Log("Close");
-                        obj.transform.DORotate(Closeangle, 1f);
+                        obj.transform.DORotate(new Vector3(0, 0, 90), 1f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorClose");
                         // Source.PlayOneShot(doorCloseSound);
                     } 
                 }
-            } else if(obj.tag == "door z facing")
-            {   
-                
-                Animator animator = obj.GetComponent<Animator>();
-                
-                if(Input.GetKeyDown(KeyCode.E))
-                {   
-                    Vector3 Openangle = new Vector3(-90f, 0, 0f);
-                    Vector3 Closeangle = new Vector3(-90f, 0, -90f);
-                    AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
-                    if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
-                        obj.transform.DORotate(Openangle, 1f);
-                        animator.Play("DoorOpen");
-                        // Source.PlayOneShot(doorOpenSound);
-                    } else if(currentAnim.IsName("DoorOpen")){
-                        Debug.Log("Close");
-                        obj.transform.DORotate(Closeangle, 1f);
-                        animator.Play("DoorClose");
-                        // Source.PlayOneShot(doorCloseSound);
-                    } 
-                }
-            }
+            } 
             
         }
 
