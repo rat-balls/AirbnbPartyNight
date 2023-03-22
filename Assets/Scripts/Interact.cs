@@ -15,6 +15,9 @@ public class Interact : MonoBehaviour
     
     public bool inRange;
 
+    public float timer = 0f;
+
+    
     private void Start() {
         DOTween.Init();
     }
@@ -33,19 +36,19 @@ public class Interact : MonoBehaviour
                 
                 Animator animator = obj.GetComponent<Animator>();
                 
-                if(Input.GetKeyDown(KeyCode.E))
+                if(Input.GetKeyDown(KeyCode.E) && timer <= 0f)
                 {   
                     
-
+                    timer = 1f;
                     AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
 
                     if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
-                        obj.transform.DORotate(new Vector3(0, 0, -90), 1f, RotateMode.LocalAxisAdd);
+                        obj.transform.DORotate(new Vector3(0, 0, -90), 0.5f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorOpen");
                         // Source.PlayOneShot(doorOpenSound);
                     } else if(currentAnim.IsName("DoorOpen")){
                         Debug.Log("Close");
-                        obj.transform.DORotate(new Vector3(0, 0, 90), 1f, RotateMode.LocalAxisAdd);
+                        obj.transform.DORotate(new Vector3(0, 0, 90), 0.5f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorClose");
                         // Source.PlayOneShot(doorCloseSound);
                     } 
@@ -53,7 +56,9 @@ public class Interact : MonoBehaviour
             } 
             
         }
-
-        
+        timer -= 1.5f * Time.deltaTime;
+        if(timer < 0){
+            timer = 0;
+        }
     }
 }
