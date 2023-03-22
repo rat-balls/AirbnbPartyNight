@@ -28,7 +28,7 @@ public class Interact : MonoBehaviour
         Collider[] objects = Physics.OverlapSphere(interactCheck.position, interactDistance, interactableMask);
         foreach (var obj in objects)
         {   
-            if(obj.tag == "door -z facing")
+            if(obj.tag == "door")
             {   
                 
                 Animator animator = obj.GetComponent<Animator>();
