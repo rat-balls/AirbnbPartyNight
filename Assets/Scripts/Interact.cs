@@ -11,6 +11,7 @@ public class Interact : MonoBehaviour
     public AudioSource Source;
     public AudioClip doorCloseSound;
     public AudioClip doorOpenSound;
+    public AudioClip itemGetSound;
 
     public float timer = 0f;
 
@@ -60,6 +61,7 @@ public class Interact : MonoBehaviour
                 
                 if(Input.GetKeyDown(KeyCode.E) && timer <= 0f)
                 {
+                    Source.PlayOneShot(itemGetSound);
                     obj.SetActive(false);
                     hasKey = true;  
                 }    
