@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.265
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.031994864, g: 0.051222473, b: 0.041373298, a: 0.265}
+  m_IndirectSpecularColor: {r: 0.032019034, g: 0.05122836, b: 0.04147531, a: 0.265}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -600,8 +600,8 @@ MonoBehaviour:
   Source: {fileID: 754071783}
   doorCloseSound: {fileID: 8300000, guid: 6d352068403442b4491592020240e46d, type: 3}
   doorOpenSound: {fileID: 8300000, guid: dc53aeaee103246498c5293de4d97be5, type: 3}
-  itemGetSound: {fileID: 8300000, guid: d07a9f762257e4112b3f8c045a30beee, type: 3}
-  keyMessage: {fileID: 1781490277}
+  itemGetSound: {fileID: 8300000, guid: 70526aa9cd484aa4d93e4b58c543a0a5, type: 3}
+  notificationText: {fileID: 1776247678}
   timer: 0
 --- !u!1 &594679639
 GameObject:
@@ -909,8 +909,8 @@ MonoBehaviour:
   mouseSensitivity: 1
   walkSpeed: 7
   tiredWalkSpeed: 4
-  sprintingMultiplier: 0
-  crouchingMultiplier: 0
+  sprintingMultiplier: 1.5
+  crouchingMultiplier: 0.5
   crouchingSpeed: 0.3
   gravity: -40
   moveSmoothTime: 0.1
@@ -2119,7 +2119,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1781490277
+--- !u!1 &1776247676
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2127,23 +2127,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1781490278}
-  - component: {fileID: 1781490280}
-  - component: {fileID: 1781490279}
+  - component: {fileID: 1776247677}
+  - component: {fileID: 1776247679}
+  - component: {fileID: 1776247678}
   m_Layer: 5
-  m_Name: keyPickup
+  m_Name: Notification
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1781490278
+  m_IsActive: 1
+--- !u!224 &1776247677
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781490277}
+  m_GameObject: {fileID: 1776247676}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -2154,16 +2154,16 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -112}
+  m_AnchoredPosition: {x: -3.547699, y: -171.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1781490279
+--- !u!114 &1776247678
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781490277}
+  m_GameObject: {fileID: 1776247676}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -2177,7 +2177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[Mansion Key] added to inventory.'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2186,8 +2186,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285982973
-  m_fontColor: {r: 0.990566, g: 0.9117155, b: 0.4625756, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 0.9082921, b: 0.5613208, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2204,8 +2204,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2246,13 +2246,13 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1781490280
+--- !u!222 &1776247679
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1781490277}
+  m_GameObject: {fileID: 1776247676}
   m_CullTransparentMesh: 1
 --- !u!1 &1931787120
 GameObject:
@@ -2323,7 +2323,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 590817977}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -2346,7 +2346,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1781490278}
+  - {fileID: 1776247677}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
