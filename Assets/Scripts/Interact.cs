@@ -72,7 +72,7 @@ public class Interact : MonoBehaviour
             }
             
         }
-        msgTimer -= 0.5f * Time.deltaTime;
+        msgTimer -= 0.7f * Time.deltaTime;
         timer -= 1.5f * Time.deltaTime;
         if(timer < 0){
             timer = 0;
