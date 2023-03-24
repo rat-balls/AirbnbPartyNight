@@ -12,11 +12,9 @@ public class Interact : MonoBehaviour
     public AudioClip doorCloseSound;
     public AudioClip doorOpenSound;
 
-    
-    public bool inRange;
-
     public float timer = 0f;
 
+    private bool hasKey = false;
     
     private void Start() {
         DOTween.Init();
@@ -37,7 +35,7 @@ public class Interact : MonoBehaviour
             {   
                 GameObject obj = hit.collider.gameObject;
                 
-                if(Input.GetKeyDown(KeyCode.E) && timer <= 0f)
+                if(Input.GetKeyDown(KeyCode.E) && timer <= 0f && hasKey)
                 {   
                     
                     timer = 1f;
@@ -55,6 +53,17 @@ public class Interact : MonoBehaviour
                     } 
                 }
             } 
+
+            if(hit.collider.CompareTag("key"))
+            {
+                GameObject obj = hit.collider.gameObject;
+                
+                if(Input.GetKeyDown(KeyCode.E) && timer <= 0f)
+                {
+                    obj.SetActive(false);
+                    hasKey = true;  
+                }    
+            }
             
         }
         timer -= 1.5f * Time.deltaTime;
