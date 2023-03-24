@@ -45,12 +45,12 @@ public class Interact : MonoBehaviour
                     if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
                         obj.transform.DORotate(new Vector3(0, 0, -90), 0.5f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorOpen");
-                        // Source.PlayOneShot(doorOpenSound);
+                        Source.PlayOneShot(doorOpenSound);
                     } else if(currentAnim.IsName("DoorOpen")){
                         Debug.Log("Close");
-                        obj.transform.DORotate(new Vector3(0, 0, 90), 0.5f, RotateMode.LocalAxisAdd);
+                        obj.transform.DORotate(new Vector3(0, 0, 90), 0.3f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorClose");
-                        // Source.PlayOneShot(doorCloseSound);
+                        Source.PlayOneShot(doorCloseSound);
                     } 
                 }
             } 
