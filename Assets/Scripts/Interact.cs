@@ -12,8 +12,10 @@ public class Interact : MonoBehaviour
     public AudioClip doorCloseSound;
     public AudioClip doorOpenSound;
     public AudioClip itemGetSound;
+    public GameObject keyMessage;
 
     public float timer = 0f;
+    private float msgTimer = 0f;
 
     private bool hasKey = false;
     
@@ -63,14 +65,22 @@ public class Interact : MonoBehaviour
                 {
                     Source.PlayOneShot(itemGetSound);
                     obj.SetActive(false);
+                    keyMessage.SetActive(true);
+                    msgTimer = 1;
                     hasKey = true;  
                 }    
             }
             
         }
+        msgTimer -= 0.5f * Time.deltaTime;
         timer -= 1.5f * Time.deltaTime;
         if(timer < 0){
             timer = 0;
+        }
+        if(msgTimer < 0)
+        {
+            msgTimer = 0;
+            keyMessage.SetActive(false);
         }
     }
 }
