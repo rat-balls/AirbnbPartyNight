@@ -29,6 +29,8 @@ public class Interact : MonoBehaviour
 
         int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | interactableMask.value;
 
+        Debug.DrawRay(transform.position, fwd, Color.red);
+
         if(Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
         {   
             if(hit.collider.CompareTag("door"))
@@ -47,7 +49,6 @@ public class Interact : MonoBehaviour
                         animator.Play("DoorOpen");
                         Source.PlayOneShot(doorOpenSound);
                     } else if(currentAnim.IsName("DoorOpen")){
-                        Debug.Log("Close");
                         obj.transform.DORotate(new Vector3(0, 0, 90), 0.3f, RotateMode.LocalAxisAdd);
                         animator.Play("DoorClose");
                         Source.PlayOneShot(doorCloseSound);
