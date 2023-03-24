@@ -5,9 +5,9 @@ using DG.Tweening;
 
 public class Interact : MonoBehaviour
 {   
-    public Transform interactCheck;
-    public float interactDistance = 7.14f;
+    public int rayLength = 8;
     public LayerMask interactableMask;
+    public string excludeLayerName = "Default";
     public AudioSource Source;
     public AudioClip doorCloseSound;
     public AudioClip doorOpenSound;
@@ -24,22 +24,22 @@ public class Interact : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        inRange = Physics.CheckSphere(interactCheck.position, interactDistance, interactableMask);
+        RaycastHit hit;
+        Vector3 fwd = transform.TransformDirection(Vector3.forward);
 
-        
+        int mask = 1 << LayerMask.NameToLayer(excludeLayerName) | interactableMask.value;
 
-        Collider[] objects = Physics.OverlapSphere(interactCheck.position, interactDistance, interactableMask);
-        foreach (var obj in objects)
+        if(Physics.Raycast(transform.position, fwd, out hit, rayLength, mask))
         {   
-            if(obj.tag == "door")
+            if(hit.collider.CompareTag("door"))
             {   
-                
-                Animator animator = obj.GetComponent<Animator>();
+                GameObject obj = hit.collider.gameObject;
                 
                 if(Input.GetKeyDown(KeyCode.E) && timer <= 0f)
                 {   
                     
                     timer = 1f;
+                    Animator animator = obj.GetComponent<Animator>();
                     AnimatorStateInfo currentAnim = animator.GetCurrentAnimatorStateInfo(0);
 
                     if(currentAnim.IsName("DoorClose") || currentAnim.IsName("Idle")){
