@@ -19,11 +19,10 @@ public class Interact : MonoBehaviour
     [Header("Notifications")]
     public TMPro.TextMeshProUGUI notificationText; //UI text displayer for notifications
 
-
     private bool hasKey = false; //Boolean to check if the player can open locked doors or not
     
     private void Start() {
-        DOTween.Init(); //Initialises DOTween (I use it to animate the doors)
+        DOTween.Init(); //Initialises DOTween (I use it to animate the doors and fade the notification text)
     }
     
     void Update()
@@ -60,7 +59,7 @@ public class Interact : MonoBehaviour
                             Source.PlayOneShot(doorCloseSound); //Plays the door closing sound
                         }
                     } else { //Else notify the player it is locked
-                        StartCoroutine(sendNotification("This door appears to be [Locked]", 3)); //Starts a parallel script that displays a notification on the screen
+                        sendNotification("This door appears to be [Locked]", 3); //Starts a parallel script that displays a notification on the screen
                     }
                 }
             } 
@@ -73,7 +72,7 @@ public class Interact : MonoBehaviour
                 {
                     Source.PlayOneShot(itemGetSound);
                     obj.SetActive(false); //Deactivates the key and keyHitbox so the player doesn't use it multiple times
-                    StartCoroutine(sendNotification("[Mansion Key] has been added to your inventory.", 3));
+                    sendNotification("[Mansion Key] has been added to your inventory.", 3);
                     hasKey = true; //Flips the hasKey boolean
                 }    
             }
@@ -81,11 +80,11 @@ public class Interact : MonoBehaviour
         }
     }
 
-    IEnumerator sendNotification(string text, int time) //Displays a notification on the screen for x amount of time
-    {
-    notificationText.text = text;
-    yield return new WaitForSeconds(time);
-    notificationText.text = "";
+    private void sendNotification(string text, int time) //Displays a notification on the screen for x amount of time
+    {       
+        notificationText.DOFade(100f, 0f); //Puts alpha to 100% in 0s
+        notificationText.text = text; //Changes the text of the notification
+        notificationText.DOFade(0f, time); //Fades alpha from current to 0% in x amount of time
     }
 
     IEnumerator doorCD(GameObject obj)
