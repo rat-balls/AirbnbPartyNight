@@ -13,9 +13,11 @@ public class Inventory : MonoBehaviour
     [Header("Objects")]
     public GameObject MainCam;
     public GameObject InvCam;
+    public GameObject key;
     public AudioSource Source;
     public GameObject monster;
     public Transform invWheel;
+    public Interact inter;
 
     [Header("Text")]
     public TMPro.TextMeshProUGUI notificationText;
@@ -30,7 +32,12 @@ public class Inventory : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        if(inter.hasKey)
+        {
+            key.SetActive(true);
+        }
+
         if(Input.GetKeyDown(KeyCode.Tab))
         {
             if(!inventory)
@@ -74,9 +81,16 @@ public class Inventory : MonoBehaviour
             {   
                 if(hit.collider.CompareTag("key"))
                 {   
+                    notificationText.DOFade(100f, 0f);
                     notificationText.text = "[Mansion Key] <br> Key to the mysterious mansion"; //Changes the text of the notification
-                } else {
+                } else if(hit.collider.CompareTag("flashlight")) {
+                    notificationText.DOFade(100f, 0f);
+                    notificationText.text = "[Flashlight] <br> Your 'trusty' flashlight";
+                } else if(hit.collider.CompareTag("item1") || hit.collider.CompareTag("item2")){
+                    notificationText.DOFade(100f, 0f);
                     notificationText.text = "[Placeholder item] <br> Item to hold the place of the holder";
+                } else if(hit.collider.CompareTag("misc")){
+                    notificationText.DOFade(0f, 0.5f);
                 }
 
                 if(Input.GetKeyDown(KeyCode.E))

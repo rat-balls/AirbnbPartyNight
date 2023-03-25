@@ -6,9 +6,10 @@ TagManager:
   tags:
   - door
   - key
-  - item
   - item1
   - item2
+  - flashlight
+  - misc
   layers:
   - Default
   - TransparentFX
