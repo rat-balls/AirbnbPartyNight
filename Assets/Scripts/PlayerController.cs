@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool isSprinting = false;
     [SerializeField] bool isCrouching = false;
     [SerializeField] float crouchHeight = 3.0f;
-    [SerializeField] float standingHeight = 8.0f;
+    [SerializeField] float standingHeight = 1.7f;
 
     [SerializeField] bool lockCursor = true;
 
