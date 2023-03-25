@@ -17,7 +17,7 @@ public class FlashlightFunction : MonoBehaviour
         {
 
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 if (OnOrOff == false)
                 {
@@ -27,7 +27,7 @@ public class FlashlightFunction : MonoBehaviour
                     source.PlayOneShot(clip);
                 }
             }
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(1))
             {
                 if (hasBeenSwitched == false)
                 {
