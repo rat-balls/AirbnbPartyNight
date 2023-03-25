@@ -7,7 +7,7 @@ public class Interact : MonoBehaviour
 {   
     [Header("Interaction")]
     public LayerMask interactableMask; //Layer that you can interact with
-    public int rayLength = 12; //Interact Range
+    public int rayLength = 3; //Interact Range
     public string excludeLayerName = "Default"; //Layer that you can't interact through (i.g. walls)
 
     [Header("Audio")]
