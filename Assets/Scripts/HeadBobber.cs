@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HeadBobber : MonoBehaviour
 {
-    [SerializeField, Range(0,0.05f)] private float _amplitudeY = 0.02f;
-    [SerializeField, Range(0,0.005f)] private float _amplitudeX = 0.0002f;
+    [SerializeField, Range(0,0.05f)] private float _amplitudeY = 0.01f;
+    [SerializeField, Range(0,0.005f)] private float _amplitudeX = 0.002f;
     [SerializeField, Range(0,30f)] private float _frequency = 10.5f;
     
     [SerializeField] private Transform _camera = null;
