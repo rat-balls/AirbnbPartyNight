@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class HeadBobber : MonoBehaviour
 {
-    [SerializeField, Range(0,0.2f)] private float _amplitudeY = 0.1f;
-    [SerializeField, Range(0,0.2f)] private float _amplitudeX = 0.005f;
+    [SerializeField, Range(0,0.05f)] private float _amplitudeY = 0.01f;
+    [SerializeField, Range(0,0.005f)] private float _amplitudeX = 0.002f;
     [SerializeField, Range(0,30f)] private float _frequency = 10.5f;
     
     [SerializeField] private Transform _camera = null;
 
-    private float _toggleSpeed = 3.0f;
+    private float _toggleSpeed = 2.0f;
     private Vector3 _startPos;
     private CharacterController _controller;
     
@@ -43,7 +43,7 @@ public class HeadBobber : MonoBehaviour
 
     private void ResetPosition(){
         if(_camera.localPosition == _startPos) return;
-        if(_controller.height < 6) return;
+        if(_controller.height < 1.6) return;
         _camera.localPosition = Vector3.Lerp(_camera.localPosition, _startPos, 1 * Time.deltaTime);
     }
 

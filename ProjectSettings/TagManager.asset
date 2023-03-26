@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - door
+  - key
+  - item1
+  - item2
+  - flashlight
+  - misc
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Interactable
-  - Interact
+  - Inventory
   - TestShader
   - 
   - 
