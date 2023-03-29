@@ -6,12 +6,17 @@ using UnityEngine.AI;
 public class Raycasting : MonoBehaviour
 {
     public float apertureAngle = 300;
+    private float cHeight;
+
+    void Start(){
+        cHeight = GetComponent<NavMeshAgent>().height;
+    }
 
     public bool CanSeePlayer(float distance, int iterations)
     {
         float angleStep = apertureAngle / (float)iterations;
         Vector3 startingPoint = transform.position;
-        startingPoint.y = transform.position.y + GetComponent<NavMeshAgent>().height/2;
+        startingPoint.y = transform.position.y + cHeight/2;
 
         RaycastHit hit;
 
@@ -27,7 +32,7 @@ public class Raycasting : MonoBehaviour
                 if (hit.transform.tag == "Player" && !GetComponent<ChasingAI>().isDead)
                 {
                     return true;
-                 }
+                }
             }
         }
 
