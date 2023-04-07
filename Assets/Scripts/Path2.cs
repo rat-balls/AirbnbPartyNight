@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path : MonoBehaviour
+public class Path2 : MonoBehaviour
 {
     [SerializeField] Transform[] Points;
 
